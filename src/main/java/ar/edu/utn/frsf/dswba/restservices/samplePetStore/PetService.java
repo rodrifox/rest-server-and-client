@@ -1,11 +1,8 @@
-package ar.edu.utn.frsf.dswba.restservices.sampleclient;
+package ar.edu.utn.frsf.dswba.restservices.samplePetStore;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
-import retrofit2.http.POST;
 import retrofit2.http.Path;
-
-import java.util.List;
 
 public interface PetService {
 

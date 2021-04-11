@@ -1,4 +1,4 @@
-package ar.edu.utn.frsf.dswba.restservices.sampleclient;
+package ar.edu.utn.frsf.dswba.restservices.samplePetStore;
 
 import java.util.List;
 

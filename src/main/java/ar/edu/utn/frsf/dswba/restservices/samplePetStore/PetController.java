@@ -1,9 +1,8 @@
-package ar.edu.utn.frsf.dswba.restservices.sampleclient;
+package ar.edu.utn.frsf.dswba.restservices.samplePetStore;
 
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
-import java.io.IOException;
 import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
