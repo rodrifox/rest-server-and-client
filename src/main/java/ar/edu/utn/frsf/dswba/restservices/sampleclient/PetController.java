@@ -1,12 +1,7 @@
 package ar.edu.utn.frsf.dswba.restservices.sampleclient;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import retrofit2.Call;
-import retrofit2.GsonConverterFactory;
-import retrofit2.Response;
-import retrofit2.Retrofit;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
 import java.util.concurrent.atomic.AtomicLong;
@@ -17,27 +12,31 @@ public class PetController {
     private final AtomicLong counter = new AtomicLong();
 
     @GetMapping("/pet")
-    public Pet greeting(@RequestParam(value = "name", defaultValue = "MyPet") String name) {
+    public Pet getPet(@RequestParam(value = "name", defaultValue = "MyPet") String name) {
 
         Pet p;
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://petstore.swagger.io/v2/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+        RestTemplate template = new RestTemplate();
+        p = template.getForObject("https://petstore.swagger.io/v2/pet/{id}", Pet.class, name);
 
-        PetService service = retrofit.create(PetService.class);
-
-        Call<Pet> petCall = service.getPet(name);
-
-        Response<Pet> response = null;
-
-        try {
-            response = petCall.execute();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return response.body();
+        return p;
 
     }
+
+
+    @PostMapping("/pet")
+    public Pet savePet(@RequestBody Pet p) {
+
+        // OBTENEMOS EL INPUT, ya transformado a objeto en Java:
+        System.out.println("*** Pet received. Name/Code: " + p.getId() + ". Category: " + p.getCategory());
+
+        // A su vez, invocamos otra API con estos datos: hacemos un POST para guardar una nueva mascota en esa API:
+        RestTemplate template = new RestTemplate();
+        Pet pet = template.postForObject("https://petstore.swagger.io/v2/pet", p,  Pet.class);
+
+        System.out.println("*** Pet SAVED!! Name/Code: " + pet.getId() + ". Category: " + pet.getCategory());
+
+        return p;
+    }
 }
+

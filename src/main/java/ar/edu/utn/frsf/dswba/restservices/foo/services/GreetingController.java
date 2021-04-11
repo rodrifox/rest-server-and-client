@@ -16,13 +16,6 @@ public class GreetingController {
     @GetMapping("/greeting")
     public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
 
-        // RestTemplate rest = new RestTemplate();
-        // Usuario usr = rest.getForObject("https://evening-sea-87432.herokuapp.com", Usuario.class);
-
-
-
-
-
         return new Greeting(counter.incrementAndGet(), String.format(template, name));
     }
 }
