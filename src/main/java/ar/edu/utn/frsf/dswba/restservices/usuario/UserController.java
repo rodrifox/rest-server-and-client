@@ -37,12 +37,8 @@ public class UserController {
         list.add(u1);
         list.add(u2);
 
-        System.out.println("------");
-
         return list;
     }
-
-
 
     /**
      * Gets users by id.
