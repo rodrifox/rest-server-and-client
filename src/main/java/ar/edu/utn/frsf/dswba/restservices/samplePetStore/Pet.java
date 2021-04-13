@@ -11,7 +11,6 @@ public class Pet {
     Category category;
     String name;
     List<String> photoUrls;
-    List<Tag> tags;
     String status;
 
     public String getId() {
@@ -54,11 +53,4 @@ public class Pet {
         this.photoUrls = photoUrls;
     }
 
-    public List<Tag> getTags() {
-        return tags;
-    }
-
-    public void setTags(List<Tag> tags) {
-        this.tags = tags;
-    }
 }

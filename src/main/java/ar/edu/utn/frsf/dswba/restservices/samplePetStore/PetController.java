@@ -16,7 +16,7 @@ public class PetController {
         Pet p;
 
         RestTemplate template = new RestTemplate();
-        p = template.getForObject("https://petstore.swagger.io/v2/pet/{id}", Pet.class, name);
+        p = template.getForObject("https://petstore.swagger.io/v2/pet/{id}", Pet.class, name); // Deserialización (JSON --> Objeto)
 
         return p;
 
