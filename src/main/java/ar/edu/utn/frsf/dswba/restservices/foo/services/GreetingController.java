@@ -11,7 +11,7 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 public class GreetingController {
 
-    private static final String template = "Hello, %s! Nice to meet you!";
+    private static final String template = "Hello, %s! Nice to meet you!!";
     private final AtomicLong counter = new AtomicLong();
 
     @GetMapping("/greeting")
